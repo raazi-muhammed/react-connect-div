@@ -1,0 +1,16 @@
+{
+    "name": "react-connect-div",
+    "version": "1.0.0",
+    "description": "react div connector",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "react",
+        "div",
+        "connector"
+    ],
+    "author": "Raazi Muhammed",
+    "license": "ISC"
+}
