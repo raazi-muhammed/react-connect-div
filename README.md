@@ -55,7 +55,7 @@ function App() {
 }
 ```
 
-![preview on the above code](./demo/images/demo-1.png)
+![preview on the above code](https://github.com/raazi-muhammed/react-connect-div/blob/main/demo/images/demo-1.png?raw=true)
 
 ---
 
@@ -75,4 +75,4 @@ function App() {
 }
 ```
 
-![preview on the above code](./demo/images/demo-2.png)
+![preview on the above code](https://github.com/raazi-muhammed/react-connect-div/blob/main/demo/images/demo-2.png?raw=true)
