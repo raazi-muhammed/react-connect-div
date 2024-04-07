@@ -44,6 +44,48 @@ function App() {
 
 ## Examples:
 
+Connect multiple elements
+
+```tsx
+import DivConnector from "react-connect-div";
+
+function App() {
+    return (
+        <main>
+            <div className="A">A</div>
+            <div className="B">B</div>
+            <div className="C">C</div>
+            <DivConnector from=".A" to=".B" />
+            <DivConnector from=".C" to=".B" />
+        </main>
+    );
+}
+```
+
+![preview on the above code](https://github.com/raazi-muhammed/react-connect-div/blob/main/demo/images/demo-4.jpg?raw=true)
+
+---
+
+Render element on the line
+
+```tsx
+import DivConnector from "react-connect-div";
+
+function App() {
+    return (
+        <main>
+            <div className="A">A</div>
+            <div className="B">B</div>
+            <DivConnector from=".A" to=".B">A to B<DivConnector/>
+        </main>
+    );
+}
+```
+
+![preview on the above code](https://github.com/raazi-muhammed/react-connect-div/blob/main/demo/images/demo-5.jpg?raw=true)
+
+---
+
 Default corner radius
 
 ```tsx
@@ -60,9 +102,9 @@ function App() {
 }
 ```
 
-![preview on the above code](./demo/images/demo-1.jpg)
+![preview on the above code](https://github.com/raazi-muhammed/react-connect-div/blob/main/demo/images/demo-1.jpg?raw=true)
 
----
+Specific corner radius
 
 ```tsx
 import DivConnector from "react-connect-div";
@@ -72,12 +114,28 @@ function App() {
         <main>
             <div className="A">A</div>
             <div className="B">B</div>
-            <div className="C">C</div>
-            <DivConnector from=".A" to=".B" />
-            <DivConnector from=".A" to=".C" />
+            <DivConnector borderRadius={40} from=".A" to=".B" />
         </main>
     );
 }
 ```
 
-![preview on the above code](https://github.com/raazi-muhammed/react-connect-div/blob/main/demo/images/demo-2.png?raw=true)
+![preview on the above code](https://github.com/raazi-muhammed/react-connect-div/blob/main/demo/images/demo-2.jpg?raw=true)
+
+Fully curved
+
+```tsx
+import DivConnector from "react-connect-div";
+
+function App() {
+    return (
+        <main>
+            <div className="A">A</div>
+            <div className="B">B</div>
+            <DivConnector borderRadius={10000} from=".A" to=".B" />
+        </main>
+    );
+}
+```
+
+![preview on the above code](https://github.com/raazi-muhammed/react-connect-div/blob/main/demo/images/demo-3.jpg?raw=true)
