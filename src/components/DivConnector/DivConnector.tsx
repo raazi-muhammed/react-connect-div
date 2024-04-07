@@ -12,10 +12,10 @@ export default function DivConnector({
     from,
     refreshWhen,
     container,
-    borderWidth = 4,
+    borderWidth = 3,
     zIndex = 1,
     borderColor = "grey",
-    borderRadius = 40,
+    borderRadius = 10,
     children,
 }: {
     to: string;

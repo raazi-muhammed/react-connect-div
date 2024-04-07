@@ -30,14 +30,17 @@ function App() {
 
 ## Props:
 
-| Prop        | Type   | Required | Default   | Description                              |
-| ----------- | ------ | -------- | --------- | ---------------------------------------- |
-| from        | string | Yes      | -         | CSS selector of the first element        |
-| to          | string | Yes      | -         | CSS selector of the second element       |
-| container   | string | No       | -         | CSS selector of container                |
-| borderColor | string | No       | '#44464C' | The color of the connecting line.        |
-| borderWidth | number | No       | 3         | The thickness of the connecting line.    |
-| refreshWhen | number | No       | -         | CSS class name of the desired container. |
+| Prop         | Type      | Required | Default | Description                              |
+| ------------ | --------- | -------- | ------- | ---------------------------------------- |
+| from         | string    | Yes      | -       | CSS selector of the first element        |
+| to           | string    | Yes      | -       | CSS selector of the second element       |
+| container    | string    | No       | -       | CSS selector of container                |
+| borderColor  | string    | No       | 'grey'  | The color of the connecting line.        |
+| borderWidth  | number    | No       | 10      | The thickness of the connecting line.    |
+| borderRadius | number    | No       | 3       | The border radius of connecting line.    |
+| zIndex       | number    | No       | 1       | zIndex on connecting line.               |
+| children     | ReactNode | No       | -       | To render components on top of the line  |
+| refreshWhen  | number    | No       | -       | CSS class name of the desired container. |
 
 ## Examples:
 
