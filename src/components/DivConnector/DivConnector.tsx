@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 enum OriginTypes {
     TOP_LEFT = "TOP_LEFT",
@@ -12,15 +12,21 @@ export default function DivConnector({
     from,
     refreshWhen,
     container,
-    borderWidth = 3,
-    borderColor = "#44464C",
+    borderWidth = 4,
+    zIndex = 1,
+    borderColor = "grey",
+    borderRadius = 40,
+    children,
 }: {
     to: string;
     from: string;
     container?: string;
     refreshWhen?: any;
     borderWidth?: number;
+    borderRadius?: number;
+    zIndex?: number;
     borderColor?: string;
+    children?: ReactNode;
 }) {
     const [position, setPosition] = React.useState({
         x: 0,
@@ -98,6 +104,59 @@ export default function DivConnector({
         }
     }, [refreshWhen]);
 
+    const SvgLine: JSX.Element = (
+        <svg
+            width={position.width}
+            height={position.height}
+            transform={`scale(1, ${
+                (position.height + borderWidth) / position.height
+            })`}
+            viewBox={`0 0 100% 100%`}>
+            <path
+                d={`M 0 ${borderWidth / 2} H ${Math.max(
+                    0,
+                    position.width / 2 - borderRadius
+                )} C ${position.width / 2} ${borderWidth / 2} ${
+                    position.width / 2
+                } 0 ${position.width / 2} ${Math.min(
+                    position.height / 2 + borderWidth / 2,
+                    borderRadius
+                )} V ${Math.max(
+                    position.height / 2,
+                    position.height - borderRadius + borderWidth
+                )} C ${position.width / 2} ${position.height} ${
+                    position.width / 2
+                } ${position.height - borderWidth / 2} ${Math.min(
+                    position.width / 2 + borderRadius,
+                    position.width
+                )} ${position.height - borderWidth / 2} H ${position.width} M ${
+                    position.width
+                } ${position.height - borderWidth / 2} Z`}
+                stroke={borderColor}
+                strokeWidth={borderWidth}
+                strokeLinejoin="round"
+                fill="none"
+            />
+        </svg>
+    );
+
+    const Children: JSX.Element = (
+        <div
+            style={{
+                bottom: 0,
+                right: 0,
+                left: 0,
+                top: 0,
+                position: "absolute",
+                display: "grid",
+                height: "100%",
+                width: "100%",
+                placeItems: "center",
+            }}>
+            {children}
+        </div>
+    );
+
     return (
         <>
             {origin == OriginTypes.BOTTOM_LEFT ? (
@@ -107,23 +166,11 @@ export default function DivConnector({
                         left: `${position.x}px`,
                         position: "absolute",
                         pointerEvents: "none",
+                        transform: "scale(-1,1)",
+                        zIndex: zIndex,
                     }}>
-                    <svg
-                        width={position.width}
-                        height={position.height}
-                        viewBox={`0 0 100% 100%`}>
-                        <path
-                            d={`M0 ${position.height} Q${position.width / 2} ${
-                                position.height
-                            } ${position.width / 2} ${position.height / 2} Q${
-                                position.width / 2
-                            } 0 ${position.width} 0
-                             m${position.width} 0 Z`}
-                            stroke={borderColor}
-                            strokeWidth={borderWidth}
-                            fill="none"
-                        />
-                    </svg>
+                    {SvgLine}
+                    {Children}
                 </div>
             ) : origin == OriginTypes.TOP_RIGHT ? (
                 <div
@@ -132,23 +179,11 @@ export default function DivConnector({
                         left: `${position.x - position.width}px`,
                         position: "absolute",
                         pointerEvents: "none",
+                        transform: "scale(-1,1)",
+                        zIndex: zIndex,
                     }}>
-                    <svg
-                        width={position.width}
-                        height={position.height}
-                        viewBox={`0 0 100% 100%`}>
-                        <path
-                            d={`M0 ${position.height} Q${position.width / 2} ${
-                                position.height
-                            } ${position.width / 2} ${position.height / 2} Q${
-                                position.width / 2
-                            } 0 ${position.width} 0
-                             m${position.width} 0 Z`}
-                            stroke={borderColor}
-                            strokeWidth={borderWidth}
-                            fill="none"
-                        />
-                    </svg>
+                    {SvgLine}
+                    {Children}
                 </div>
             ) : origin == OriginTypes.BOTTOM_RIGHT ? (
                 <div
@@ -157,22 +192,10 @@ export default function DivConnector({
                         left: `${position.x - position.width}px`,
                         position: "absolute",
                         pointerEvents: "none",
+                        zIndex: zIndex,
                     }}>
-                    <svg
-                        width={position.width}
-                        height={position.height}
-                        viewBox={`0 0 100% 100%`}>
-                        <path
-                            d={`M0 0 Q${position.width / 2} 0 ${
-                                position.width / 2
-                            } ${position.height / 2} Q${position.width / 2} ${
-                                position.height
-                            } ${position.width} ${position.height} m0 0 Z`}
-                            stroke={borderColor}
-                            strokeWidth={borderWidth}
-                            fill="none"
-                        />
-                    </svg>
+                    {SvgLine}
+                    {Children}
                 </div>
             ) : (
                 <div
@@ -181,22 +204,10 @@ export default function DivConnector({
                         left: `${position.x}px`,
                         position: "absolute",
                         pointerEvents: "none",
+                        zIndex: zIndex,
                     }}>
-                    <svg
-                        width={position.width}
-                        height={position.height}
-                        viewBox={`0 0 100% 100%`}>
-                        <path
-                            d={`M0 0 Q${position.width / 2} 0 ${
-                                position.width / 2
-                            } ${position.height / 2} Q${position.width / 2} ${
-                                position.height
-                            } ${position.width} ${position.height} m0 0 Z`}
-                            stroke={borderColor}
-                            strokeWidth={borderWidth}
-                            fill="none"
-                        />
-                    </svg>
+                    {SvgLine}
+                    {Children}
                 </div>
             )}
         </>
