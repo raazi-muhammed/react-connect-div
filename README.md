@@ -44,6 +44,8 @@ function App() {
 
 ## Examples:
 
+Default corner radius
+
 ```tsx
 import DivConnector from "react-connect-div";
 
@@ -58,7 +60,7 @@ function App() {
 }
 ```
 
-![preview on the above code](https://github.com/raazi-muhammed/react-connect-div/blob/main/demo/images/demo-1.png?raw=true)
+![preview on the above code](./demo/images/demo-1.jpg)
 
 ---
 
